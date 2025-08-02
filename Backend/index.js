@@ -1,16 +1,21 @@
-const express = require("express");//importing all the required things 
-const mongoose = require("mongoose");
-const cors =require("cors");
+import express from "express"; //importing all the required things 
+import mongoose from "mongoose";
+import cors from "cors";
+import snippetsRoutes from "./Routes/snippetRoutes.js";
+import dotenv from "dotenv";
 
-require('dotenv').config(); // required to read the env file 
+dotenv.config(); // required to read the env file 
 
 //express app
 const app = express();
 
 
 //middle part of connecting 
-app.use(cors); // this helps in getting request from other domains frontend 
-app.use(express.json)  //prases the json request comming 
+app.use(cors()); // this helps in getting request from other domains frontend 
+app.use(express.json());  //prases the json request comming
+
+// Routes
+app.use('/api/snippets', snippetsRoutes); 
 
 
 
